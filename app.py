@@ -7,13 +7,14 @@ from flask_session import Session
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash
 import pymysql
-# from flask_socketio import SocketIO, emit
+
 # 처음 실행할 때 마스터 유저 생성
 from models import User, Authority, Dashboard, UserDashboardAccess
 
 def create_app():
     app = Flask(__name__)
     app.secret_key = 'aP9swM8lG8#q!zW4lM2k@eR1'
+    
     db_name = 'login'
     
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:1234@127.0.0.1/{db_name}'
@@ -87,8 +88,7 @@ def create_app():
                 {'id': 4, 'dashboard_name': 'GPCA Logistics Trend(IT, BO)'},
                 {'id': 5, 'dashboard_name': 'GPCA Logistics Trend'},
                 {'id': 6, 'dashboard_name': 'Pending Tickets'},
-                {'id': 7, 'dashboard_name': 'STO'},
-                {'id': 8, 'dashboard_name': 'Recall'}
+                {'id': 7, 'dashboard_name': 'STO'}
             ]
             
             for data in dashboard_data:
